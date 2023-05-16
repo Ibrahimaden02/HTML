@@ -1,0 +1,18 @@
+#weg{
+    color: rgba(0, 0, 0, .5);
+}
+#gun{
+    color: blue;
+}
+#gun1{
+    caret-color: aquamarine;
+}
+nav{
+    color: brown;
+    margin:2px ;
+    padding: 2px;
+   
+}
+div{
+    text-align: center;
+}
