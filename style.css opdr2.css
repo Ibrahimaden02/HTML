@@ -1,18 +1,93 @@
-var n = 130507;
-var sum = 0.0;
-var add = true;
-for (var i = 1; i < n; i += 2)
+string[] Words = { "LINGO", "ZWERK", "VEGER", "GROEN" };
+
+
+
+foreach (string word in Words)
 {
-    var breuk = 1.0 / i;
-    if (add)
+    Guess(word);
+}
+
+
+
+void Guess(string w)
+{
+    int max = 4;
+    int attempt = 1;
+    bool guessed = false;
+    while (attempt <= max && guessed == false)
     {
-        sum += breuk;
-        add = false;
+        Console.WriteLine("raad een woord");
+        string? guess = Console.ReadLine()?.ToUpper();
+        guessed = CheckGuess(w, guess);
+        attempt++;
+    }
+}
+
+
+
+bool CheckGuess(string word, string? guess)
+{
+    if (word == guess)
+    {
+        Console.WriteLine("goed");
+        return true;
     }
     else
     {
-        sum -= breuk;
-        add = true;
+        Console.WriteLine("Fout");
+        showscore(word, guess);
+        return false;
     }
-}
-Console.WriteLine(4 * sum);
+    string[] Words = { "LINGO", "ZWERK", "VEGER", "GROEN" };
+
+
+
+    foreach (string word in Words)
+    {
+        Guess(word);
+    }
+
+
+
+    void Guess(string w)
+    {
+        int max = 4;
+        int attempt = 1;
+        bool guessed = false;
+        while (attempt <= max && guessed == false)
+        {
+            Console.WriteLine("raad een woord");
+            string? guess = Console.ReadLine()?.ToUpper();
+            guessed = CheckGuess(w, guess);
+            attempt++;
+        }
+    }
+
+
+
+    bool CheckGuess(string word, string? guess)
+    {
+        if (word == guess)
+        {
+            Console.WriteLine("goed");
+            return true;
+        }
+        else
+        {
+            Console.WriteLine("Fout");
+            showscore(word, guess);
+            return false;
+        }
+    }
+
+
+
+    void showscore(string word, string? guess)
+    {
+        for (int i = 0; i < guess?.Length; i++)
+        {
+            Console.WriteLine(guess[i]);
+            Thread.Sleep(100);
+            Console.Beep();
+        }
+    }
