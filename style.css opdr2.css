@@ -1,93 +1,51 @@
-string[] Words = { "LINGO", "ZWERK", "VEGER", "GROEN" };
 
 
-
-foreach (string word in Words)
+public class PostcodeChecker
 {
-    Guess(word);
-}
-
-
-
-void Guess(string w)
-{
-    int max = 4;
-    int attempt = 1;
-    bool guessed = false;
-    while (attempt <= max && guessed == false)
+    public static bool ControleerPostcode(string postcode)
     {
-        Console.WriteLine("raad een woord");
-        string? guess = Console.ReadLine()?.ToUpper();
-        guessed = CheckGuess(w, guess);
-        attempt++;
-    }
-}
+        
+        postcode = postcode.Replace(" ", "");
 
+        
+        if (postcode.Length != 6)
+        {
+            return false;
+        }
 
+        
+        for (int i = 0; i < 4; i++)
+        {
+            if (!Char.IsDigit(postcode[i]))
+            {
+                return false;
+            }
+        }
 
-bool CheckGuess(string word, string? guess)
-{
-    if (word == guess)
-    {
-        Console.WriteLine("goed");
+        
+        for (int i = 4; i < 6; i++)
+        {
+            if (!Char.IsLetter(postcode[i]))
+            {
+                return false;
+            }
+        }
+
         return true;
     }
-    else
+
+    public static void Main()
     {
-        Console.WriteLine("Fout");
-        showscore(word, guess);
-        return false;
-    }
-    string[] Words = { "LINGO", "ZWERK", "VEGER", "GROEN" };
+        Console.Write("Voer een Nederlandse postcode in: ");
+        string postcode = Console.ReadLine();
 
-
-
-    foreach (string word in Words)
-    {
-        Guess(word);
-    }
-
-
-
-    void Guess(string w)
-    {
-        int max = 4;
-        int attempt = 1;
-        bool guessed = false;
-        while (attempt <= max && guessed == false)
+        if (ControleerPostcode(postcode))
         {
-            Console.WriteLine("raad een woord");
-            string? guess = Console.ReadLine()?.ToUpper();
-            guessed = CheckGuess(w, guess);
-            attempt++;
-        }
-    }
-
-
-
-    bool CheckGuess(string word, string? guess)
-    {
-        if (word == guess)
-        {
-            Console.WriteLine("goed");
-            return true;
+            Console.WriteLine("De postcode is correct!");
         }
         else
         {
-            Console.WriteLine("Fout");
-            showscore(word, guess);
-            return false;
+            Console.WriteLine("De postcode is onjuist.");
         }
     }
-
-
-
-    void showscore(string word, string? guess)
-    {
-        for (int i = 0; i < guess?.Length; i++)
-        {
-            Console.WriteLine(guess[i]);
-            Thread.Sleep(100);
-            Console.Beep();
-        }
-    }
+}
