@@ -1,51 +1,27 @@
-
-
-public class PostcodeChecker
+Console.WriteLine("Priemgetallen berekenen");
+int primeNumbers = 2000;
+int lastPrime = 0;
+for (int i = 0; i < primeNumbers; i++)
 {
-    public static bool ControleerPostcode(string postcode)
+    lastPrime = FindPrime(lastPrime + 1);
+    Console.WriteLine(lastPrime);
+}
+int FindPrime(int last)
+{
+    while (!IsPrime(last))
     {
-        
-        postcode = postcode.Replace(" ", "");
-
-        
-        if (postcode.Length != 6)
+        last++;
+    }
+    return last;
+}
+bool IsPrime(int last)
+{
+    for (int i = last - 1; i > 1; i--)
+    {
+        if (last % i == 0)
         {
             return false;
         }
-
-        
-        for (int i = 0; i < 4; i++)
-        {
-            if (!Char.IsDigit(postcode[i]))
-            {
-                return false;
-            }
-        }
-
-        
-        for (int i = 4; i < 6; i++)
-        {
-            if (!Char.IsLetter(postcode[i]))
-            {
-                return false;
-            }
-        }
-
-        return true;
     }
-
-    public static void Main()
-    {
-        Console.Write("Voer een Nederlandse postcode in: ");
-        string postcode = Console.ReadLine();
-
-        if (ControleerPostcode(postcode))
-        {
-            Console.WriteLine("De postcode is correct!");
-        }
-        else
-        {
-            Console.WriteLine("De postcode is onjuist.");
-        }
-    }
+    return true;
 }
