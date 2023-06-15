@@ -1,18 +1,18 @@
-#weg{
-    color: rgba(0, 0, 0, .5);
+var n = 130507;
+var sum = 0.0;
+var add = true;
+for (var i = 1; i < n; i += 2)
+{
+    var breuk = 1.0 / i;
+    if (add)
+    {
+        sum += breuk;
+        add = false;
+    }
+    else
+    {
+        sum -= breuk;
+        add = true;
+    }
 }
-#gun{
-    color: blue;
-}
-#gun1{
-    caret-color: aquamarine;
-}
-nav{
-    color: brown;
-    margin:2px ;
-    padding: 2px;
-   
-}
-div{
-    text-align: center;
-}
+Console.WriteLine(4 * sum);
