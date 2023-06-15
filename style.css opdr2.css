@@ -1,27 +1,36 @@
-Console.WriteLine("Priemgetallen berekenen");
-int primeNumbers = 2000;
-int lastPrime = 0;
-for (int i = 0; i < primeNumbers; i++)
+
+
+class Program
 {
-    lastPrime = FindPrime(lastPrime + 1);
-    Console.WriteLine(lastPrime);
-}
-int FindPrime(int last)
-{
-    while (!IsPrime(last))
+    static bool IsPalindrome(string word)
     {
-        last++;
-    }
-    return last;
-}
-bool IsPrime(int last)
-{
-    for (int i = last - 1; i > 1; i--)
-    {
-        if (last % i == 0)
+        int length = word.Length;
+        for (int i = 0; i < length / 2; i++)
         {
-            return false;
+            if (word[i] != word[length - 1 - i])
+            {
+                return false;
+            }
         }
+        return true;
     }
-    return true;
+
+    static void Main()
+    {
+        Console.WriteLine("Voer een woord in:");
+        string input = Console.ReadLine();
+
+        if (IsPalindrome(input))
+        {
+            Console.WriteLine("Het ingevoerde woord is een palindroom.");
+        }
+        else
+        {
+            Console.WriteLine("Het ingevoerde woord is geen palindroom.");
+        }
+
+        // Wacht totdat de gebruiker op een toets drukt voordat het programma eindigt
+        Console.ReadKey();
+    }
 }
+ 
