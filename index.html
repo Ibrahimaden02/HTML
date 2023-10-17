@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="top-navbar">
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="index.html">service</a></li>
+            <li><a href="index.html">licenties</a></li>
+            <li><a href="index.html">contact</a></li>
+            <li><a href="index.html">inloggen</a></li>
+        </ul>
+    </nav>
 
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="login.php" method="post">
+            <div class="radio-group">
+                <input type="radio" name="user_type" value="student" id="student" checked>
+                <label for="student">Student</label>
+                <input type="radio" name="user_type" value="admin" id="admin">
+                <label for="admin">Admin</label>
+            </div>
+
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+
+            <div class="password-remember-box">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">sla gegevens op</label>
+            </div>
+
+            <div class="signup-login-boxes">
+                <div class="signup-box">
+                    <a href="sign up hier.html">Wachtwoord vergeten?</a>
+                </div>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
